@@ -1,0 +1,21 @@
+sudo: required
+
+language: ruby
+
+services:
+ - docker
+
+before_install:
+ - docker build -t sagebionetworks/mole-mapper-mover .
+
+script:
+ # Now run the tests.
+ # Note:  Omitting '--no-manual' below results in "Error in texi2dvi(...):  pdflatex is not available"
+ - docker run -w /MoleMapperMover/tests -e SYNAPSE_USERNAME=$SYNAPSE_USERNAME -e SYNAPSE_APIKEY=$SYNAPSE_APIKEY  sagebionetworks/mole-mapper-mover bash -c "R --no-save < /MoleMapperMover/tests/testthat.R"
+ 
+after_success:
+ - test $TRAVIS_PULL_REQUEST == "false" && docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+ - test $TRAVIS_PULL_REQUEST == "false" && docker push sagebionetworks/mole-mapper-mover
+ # Delete the cached registry credentials
+ - test $TRAVIS_PULL_REQUEST == "false" && rm /home/travis/.docker/config.json
+ 

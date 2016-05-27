@@ -1,0 +1,9 @@
+\.travis\.yml
+\.project
+\.gitignore
+\.dockerignore
+\.DS_Store
+\.\.Rcheck
+\.git
+^.*\.Rproj$
+^\.Rproj\.user$

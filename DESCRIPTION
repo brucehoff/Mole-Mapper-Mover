@@ -1,0 +1,13 @@
+Package: MoleMapperMover
+Type: Package
+Title: Moves Mole Mapper Data from v1 archive to v2
+Version: 1.0
+Date: 2016-05-27
+Author: Brian Bot
+Maintainer: Brian Bot <brian.bot@sagebase.org>
+Description: This package processes mPower data.
+License: GPL
+Imports: synapseClient, RJSONIO, rjson, RCurl
+Remotes: github::Sage-Bionetworks/rSynapseClient
+Suggests: testthat
+
