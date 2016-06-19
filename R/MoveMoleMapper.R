@@ -9,4 +9,8 @@
 # *all* the tables in the archive project
 MoveMoleMapper<-function(archiveProjectId, liveProjectId) {
 	
+	# In Bridge projects, there is a *-appVersion table ... where the following (example) 
+	# query can be run to determine the names of the Bridge tables being exported into:
+
+	# SELECT DISTINCT originalTable FROM syn4984903
 }
